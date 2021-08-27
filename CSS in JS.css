@@ -1,0 +1,12 @@
+h1{
+    color: blue;
+    transition:color .5s ease-in-out;
+}
+
+.clicked{
+    color: tomato;
+}
+
+.font{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
