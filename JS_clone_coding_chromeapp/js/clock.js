@@ -8,5 +8,5 @@ function getClock(){
     clock.innerText =`${houes}:${minutes}:${second}`; 
 }
 
-getClock();
-setInterval(getClock, 1000);
+getClock();//처음에 00:00:00이 안뜨게 하기위해
+setInterval(getClock, 1000);//1초마다 getClock 실행
