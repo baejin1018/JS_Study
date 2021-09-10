@@ -2,7 +2,9 @@ const toDoForm = document.getElementById("todo-form");
 const toDoList = document.getElementById("todo-list");
 const toDoInput = toDoForm.querySelector("input");
 
-const toDos = [];
+const TODOS_KEY = "todos"
+
+let toDos = [];
 
 const saveToDos = () =>{
     localStorage.setItem("todos",JSON.stringify(toDos));//localStorage에 toDos 값을 넣어준다
@@ -35,3 +37,19 @@ const handleToDoSubmit = (event)=> {//function handleToDoSubmit(event) 와 같�
 }
 
 toDoForm.addEventListener("submit",handleToDoSubmit);
+
+//const sayHello = (item) =>{
+//    console.log("this is the turn on",item);
+//}
+
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
+if(savedToDos !== null){ 
+    const parsedToDos = JSON.parse(savedToDos);
+    toDos = parsedToDos; //이전투두를 복원하기 위해 
+    parsedToDos.forEach(paintToDo);
+}
+//const sayHello = (item) =>{
+//    console.log("this is the turn on",item);
+//}
+//(item) => console.log("this is the turn of",item) 위에 코드랑 같은 뜻
