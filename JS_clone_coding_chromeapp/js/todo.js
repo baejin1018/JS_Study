@@ -4,13 +4,14 @@ const toDoInput = toDoForm.querySelector("input");
 
 const TODOS_KEY = "todos"
 
-let toDos = [];
+let toDos = []; // [{text: sdf, id: 1},{text: sdf, id: 13}]...
 
 const saveToDos = () =>{
     localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));//localStorage에 toDos 값을 넣어준다
 }//JSON.stringify 는 어떤것이라도 string으로 만들어준다
 
 const deleteToDo = (event) =>{
+    console.log(event.target);
     const li = (event.target.parentElement);
     li.remove();
     toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id))// toDo.id !== li.id이 조건에 맞으면 남겨두고 조건에 맞지않으면 제외시킨다
@@ -20,6 +21,7 @@ const deleteToDo = (event) =>{
 
 const paintToDo = (newTodo) =>{
     const li = document.createElement("li");
+    // <li><span>sdf</span><button>x</button></li>
     li.id = newTodo.id; //li의 id를 newTodo의 아이디로 변경
     const span = document.createElement("span");
     span.innerText = newTodo.text;//텍스트를 span 안에 넣는다

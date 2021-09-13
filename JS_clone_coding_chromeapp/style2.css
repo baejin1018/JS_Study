@@ -1,3 +1,28 @@
 .hidden{
     display: none;
 }
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+body #quote{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+}
+
+.back{
+    /* background-image: url("./img/0.1jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.button, input{
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+}
