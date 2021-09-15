@@ -1,28 +1,53 @@
-.hidden{
-    display: none;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+body #quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+}
+.back {
+  /* background-image: url("./img/0.1jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
+input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 150px;
+  height: 30px;
 }
-body #quote{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+.button {
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 50px;
+  height: 30px;
 }
 
-.back{
-    /* background-image: url("./img/0.1jpg"); */
-    background-repeat: no-repeat;
-    background-size: cover;
+#todo-list button {
+  background: none;
+  border: none;
+  width: 30px;
+  height: 30px;
 }
-.button, input{
-    background: none;
-    border: none;
-    border-bottom: 1px solid black;
+
+#clock {
+  font-size: 70px;
+  margin: 20px;
+}
+
+.hidden {
+  display: none;
 }
