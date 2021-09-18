@@ -1,7 +1,6 @@
 const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
-const todoHidden = document.querySelector("#todo-form");
 
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
@@ -16,7 +15,6 @@ function onLoginSubmit(event) {
 
 function paintGreetings(username) {
   greeting.innerText = "Hello " + username; //'Hello ${username}`;=
-  todoHidden.classList.remove(HIDDEN_CLASSNAME);
   greeting.classList.remove(HIDDEN_CLASSNAME); //greeting에 있는  hidden을 삭제
 }
 
@@ -24,7 +22,6 @@ const saveUsername = localStorage.getItem(USERNAME_KEY);
 
 if (saveUsername === null) {
   loginForm.classList.remove(HIDDEN_CLASSNAME);
-  todoHidden.classList.remove(todoHidden);
   loginForm.addEventListener("submit", onLoginSubmit);
 } else {
   paintGreetings(saveUsername);
