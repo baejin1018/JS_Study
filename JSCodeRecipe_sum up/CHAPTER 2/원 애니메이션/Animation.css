@@ -1,0 +1,8 @@
+.character {
+    background-image: url(https://github.com/Jpub/JSCR_278/blob/master/common/images/character.png?raw=true);
+    background-size: 100px 100px;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+  }
+  

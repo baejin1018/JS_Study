@@ -1,0 +1,8 @@
+.rectangle{
+    width: 100%;
+    height: 500px;
+    --start: hsl(0, 100%, 50%);/*hsl 색상 채도 밝기를 이용해 색상정의 */
+    --end: hsl(322,100%,50%);
+    background-image: linear-gradient(-135deg, var(--start), var(--end));
+    border: 1px solid black;
+}
