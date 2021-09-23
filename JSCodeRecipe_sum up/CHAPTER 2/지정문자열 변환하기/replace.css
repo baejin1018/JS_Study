@@ -1,0 +1,33 @@
+.inputform{
+    width: 800px;
+    height: 500px;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background-color: green;
+}
+
+#phonenum{
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 0px;
+}
+
+#submitButton{
+    background-color: green;
+    color: white;
+    border: none;
+    width: 100px;
+    height: 30px;
+}
+
+h1{
+    text-align: center;
+}
