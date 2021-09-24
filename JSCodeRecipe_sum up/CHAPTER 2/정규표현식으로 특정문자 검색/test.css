@@ -1,0 +1,32 @@
+.form{
+    width: 70%;
+    height: 700px;
+    background-color: white;
+    flex-direction: column;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(37, 37, 172);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+}
+
+#warningMessage{
+    color: red;
+}
+
+h1{
+    text-align: center;
+    margin: 40px;
+}
+
+#phoneNumber{
+    width: 70%;
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid black;
+}
