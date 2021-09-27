@@ -1,8 +1,8 @@
 //검색어
-const searchWordText = document.querySelector('#search-word-input');
+const searchWordText = document.querySelector("#search-word-input");
 
-//지역 리스트 
-const prefectureList = document.querySelectorAll('#prefecture-list button');
+//지역 리스트
+const prefectureList = document.querySelectorAll("#prefecture-list button");
 
 // 문자가 입력될 때마다 데이터 체크 작업 실행
 searchWordText.addEventListener("keyup", () => {
@@ -30,8 +30,7 @@ searchWordText.addEventListener("keyup", () => {
     ) {
       // 검색어의 첫번째 글자가 일치하는 경우 hide 클래스를 제거
       element.classList.remove("hide");
-    } 
-    else {
+    } else {
       // 검색어의 첫번째 글자가 일치하지 않는 경우 hide 클래스를 추가
       element.classList.add("hide");
     }
