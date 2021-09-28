@@ -170,6 +170,50 @@ console.log(elements.join("-")); // "Fire-Air-Water"
 - # indexOf
   > ### 구문 : 배열.indexOf(검색데이터,[시작위치])
 
-<br>
-
 ### `indexOf` : 요소의 인덱스 위치 검색하기
+
+```js
+[1, 2, 3, 4, 5, 4, 3, 2].indexOf(4); //3
+```
+
+<br><br>
+
+- # lastIndexOf
+  > ### 구문 : 배열.lastIndexOf(검색데이터,[시작위치])
+
+### `lastIndexOf` : 뒷부분 부터 요소의 인덱스 위치 검색하기
+
+```js
+[1, 2, 3, 4, 5, 4, 3, 2].lastIndexOf(4); //5
+```
+
+<br><br>
+
+- # includes
+  > ### 구문 : 배열.includes(검색데이터,[시작위치])
+
+### `includes` : 요소가 배열에 포함하는지 안하는지 여부확인하기
+
+```js
+[1, 2, 3, 4, 5, 4, 3, 2].includes(4); //true
+[1, 2, 3, 4, 5, 4, 3, 2].includes(0); //false
+```
+
+<br><br>
+
+- # find
+  > ### 구문 : 배열.find(콜백함수)
+
+### 콜백함수 : ( [요소] , [인덱스] , [기존배열] ) => 진릿값
+
+- 요소를 확인하고 진리값을 반환
+
+### `find` : 콜백함수 조건에 맞는 첫 요소를 찾는다
+
+```js
+const myArray = ["곰", "사자", "여우", "원숭이"];
+
+const targetUser = myArray.find((element) => element === "사자");
+
+console.log(targetUser); //결과 : '사과'
+```

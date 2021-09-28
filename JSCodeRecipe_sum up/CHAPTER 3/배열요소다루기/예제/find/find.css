@@ -1,0 +1,23 @@
+* {
+  color: white;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(8, 15, 83);
+}
+
+.user {
+  font-size: 100px;
+}
+
+#search-id-input {
+  width: 500px;
+  height: 100px;
+  color: black;
+}
+
+#search-result {
+}
