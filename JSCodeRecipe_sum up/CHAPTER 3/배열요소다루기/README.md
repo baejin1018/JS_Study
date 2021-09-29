@@ -217,3 +217,48 @@ const targetUser = myArray.find((element) => element === "사자");
 
 console.log(targetUser); //결과 : '사과'
 ```
+
+<br><br>
+# 배열요소 역순 정렬하기
+- # reverse
+  > ### 구문 : 배열.reverse()
+
+### `reverse` : 배열을 역순으로 정렬
+
+```js
+const array = [1,3,5];
+array.reverse();
+console.log(array); //결과 : [5,3,1]
+```
+
+<br><br>
+# 배열요소 정렬 방법 지정하기
+- # sort
+  > ### 구문 : 배열.sort( [ 비교함수 ] )
+
+  ### `sort` : 배열을 비교함수로 정렬하기
+
+  * ( 비교함수 ) 반환값 < 0  : a,b의 순서대로 정렬
+  * ( 비교함수 ) 반환값 = 0  : 정렬 순서의 변화 없음
+  * ( 비교함수 ) 반환값 > 0  : b,a의 순서대로 정렬
+
+  ```js
+  const array = [1,2,3,4,5];
+
+  array.sort((a,b)=>{
+    //a가 b 보다 작으면 a,b 순서로 정렬
+    if(a<b){
+      return 1;
+    }
+    //a와 b가 같으면 정렬 순서 변화없음
+    if(a===b){
+      return 0;
+    }
+    //a가 b보다 크면 b,a 순서로 정렬
+    if(a>b){
+      return -1;
+    }
+  })
+
+  console.log(array); //[5,4,3,2,1]
+  ```
