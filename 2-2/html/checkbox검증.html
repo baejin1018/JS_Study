@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="return check()">
+        <input type="checkbox" name="fav" value="fruit" />과일
+        <input type="checkbox" name="fav" value="coffe" />커피
+        <input type="checkbox" name="fav" value="tea" />차
+        <input type="checkbox" name="fav2" value="icecream" />아이스크림
+        <input type="submit" value="확인" />
+      </form>
+      <script>
+        function check() {
+            //모든항목의 true false확인
+         const query = 'input[type="checkbox"]';
+         const checks = document.querySelectorAll(query);
+         checks.forEach((i)=>{
+            console.log(`All: ${i.value} - ${i.checked}`);
+         })
+
+         //체크된 항목만 검색
+         const query2 = 'input[type="checkbox"]:checked';
+         const trueChecks = document.querySelectorAll(query2);
+         trueChecks.forEach((i)=>{
+            console.log(`checked: ${i.value} - ${i.checked}`);
+         })
+
+         //특정 이름의 체크된 항목만 검색
+         const query3 = 'input[name="fav2"]';
+         const favChecks = document.querySelectorAll(query3);
+         favChecks.forEach((i)=>{
+            console.log(`Fav2: ${i.value} - ${i.checked}`);
+         })
+         return false;
+        }
+      </script>
+    </body>
+</body>
+</html>

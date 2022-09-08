@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      tr,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <form onsubmit="return check()">
+      <table>
+        <tr>
+          <td>성별</td>
+          <td>
+            <input type="radio" name="sex" />남성
+            <input type="radio" name="sex" />여성
+          </td>
+        </tr>
+        <tr>
+          <td>연령</td>
+          <td>
+            <select name="select">
+              <option value="10row">10대미만</option>
+              <option value="10">10대</option>
+              <option value="20">20대</option>
+              <option value="30">30대</option>
+              <option value="40up">40대 이상</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>신청항목</td>
+          <td>
+            <input type="checkbox" name="check" value="note" />공책
+            <input type="checkbox" name="check" value="pen" />연필
+            <input type="checkbox" name="check" value="ballpen" />볼펜
+            <input type="checkbox" name="check" value="stick" />자
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><input type="submit" value="확인" /></td>
+        </tr>
+      </table>
+    </form>
+    <script src="./index.js"></script>
+  </body>
+</html>

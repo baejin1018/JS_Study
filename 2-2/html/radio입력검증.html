@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsubmit="return check()">
+      <input type="radio" name="dessert" value="fruit" />과일
+      <input type="radio" name="dessert" value="coffe" />커피
+      <input type="radio" name="dessert" value="tea" />차
+      <input type="radio" name="dessert" value="icecream" />아이스크림
+      <input type="submit" value="확인" />
+    </form>
+    <script>
+      function check() {
+        const query = 'input[name="dessert"]:checked';
+        const selected = document.querySelector(query);
+        if (selected == null) {
+          alert("디저트를 선택해주세요");
+          return false;
+        }
+        console.log(selected.value);
+        return false; //콘솔을 보기위해 false리턴
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      tr,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <form onsubmit="return check()">
+      <table>
+        <tr>
+          <td>아이디</td>
+          <td><input type="text" id="userid" /></td>
+        </tr>
+        <tr>
+          <td>생년월일(YYMMDD)</td>
+          <td><input type="text" id="brithday" /></td>
+        </tr>
+        <tr>
+          <td>비밀번호(최소4자)</td>
+          <td><input type="text" id="password" /></td>
+        </tr>
+        <tr>
+          <td>비밀번호확인</td>
+          <td><input type="text" id="password2" /></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="확인" /></td>
+        </tr>
+      </table>
+    </form>
+    <script src="./index.js"></script>
+  </body>
+</html>
