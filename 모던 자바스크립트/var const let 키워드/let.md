@@ -52,11 +52,11 @@ var의 단점을 보완하기 위해 ES6에서 새로운 변수 선언 키워드
   이것만 보면 호이스팅이 발생하지 않는것 처럼보이지만 그렇지 않다
 
   ```js
-  let foo = 1; //전역변수
+  let x = 1; //전역변수
   {
     //호이스팅이 발생하지 않았다면 전역변수 x를 참조해 1이 나와야함
     console.log(foo); ////RefereceError: foo is not defined
-    let foo = 2; //지역변수
+    let x = 2; //지역변수
   }
   ```
 
