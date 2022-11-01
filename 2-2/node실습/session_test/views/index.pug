@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  if userId 
+    p= userId 
+    a(href='/auth/signout') 로그아웃
+  else 
+    a(href="/auth/signup") 회원가입
+    a(href="/auth/signin") 로그인
+
