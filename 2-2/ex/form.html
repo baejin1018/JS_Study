@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>Exercise2</title>
+    <script src="./form.js"></script>
+    <link href="./form.css" rel="stylesheet" />
+  </head>
+  <body>
+    <form onsubmit="return check()">
+      <table>
+        <tr>
+          <th>상호</th>
+          <td><input type="text" id="mutual" /></td>
+        </tr>
+
+        <tr>
+          <th>대표자</th>
+          <td><input type="text" id="username" /></td>
+        </tr>
+
+        <tr>
+          <th>사업자 등록 번호</th>
+          <td><input type="text" id="number" maxlength="10" /></td>
+        </tr>
+
+        <tr>
+          <th>대표전화</th>
+          <td><input type="text" id="phoneNumber" /></td>
+        </tr>
+
+        <tr>
+          <th>거래처 ID</th>
+          <td><input type="text" id="id" /></td>
+        </tr>
+
+        <tr>
+          <th>비밀번호(최소6자)</th>
+          <td><input type="password" id="password" /></td>
+        </tr>
+
+        <tr>
+          <th>비밀번호 확인</th>
+          <td><input type="password" id="password2" /></td>
+        </tr>
+
+        <tr>
+          <td>분류</td>
+          <td>
+            <select name="division">
+              <option>대기업</option>
+              <option>중소기업</option>
+              <option>소공상인</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>개인 정보 동의</td>
+          <td>
+            <input type="radio" name="personal" value="yes" />동의함
+            <input type="radio" name="personal" value="no" />동의안함
+          </td>
+        </tr>
+
+        <tr>
+          <td>처리 방법</td>
+          <td>
+            <input type="radio" name="register" value="submit" />즉시등록
+            <input type="radio" name="register" value="submit2" />임시저장
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><input type="submit" value="확인" /></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

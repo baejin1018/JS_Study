@@ -1,0 +1,13 @@
+table, th, tr, td {
+    border: 1px solid black;
+}
+
+table {
+    margin: auto;
+    justify-content: center;
+    width: 50%;
+}
+
+#mutual, #username, #number, #phoneNumber, #id, #password, #password2 {
+    width: 97%;
+}

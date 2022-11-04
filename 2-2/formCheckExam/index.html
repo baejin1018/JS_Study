@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="./index.css" rel="stylesheet" />
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <form onsubmit="return checkForm()">
+      <div>
+        <div><h1>상호</h1></div>
+        <div><input id="상호" type="text" placeholder="상호" /></div>
+        <p class="ok">상호를 작성해 주세요</p>
+      </div>
+      <div>
+        <div><h1>사업자등록번호</h1></div>
+        <input id="사업자등록번호" type="text" maxlength="10" />
+        <p class="ok">사업자등록번호를 작성해 주세요</p>
+      </div>
+      <div>
+        <div><h1>대표전화</h1></div>
+        <input id="대표전화" type="text" />
+        <p class="ok">대표전화를 작성해 주세요</p>
+      </div>
+      <div>
+        <div><h1>거래처ID</h1></div>
+        <input id="거래처ID" type="text" />
+        <p class="ok">거래처ID를 작성해 주세요</p>
+      </div>
+      <div>
+        <div><h1>비밀번호</h1></div>
+        <input id="비밀번호" type="password" />
+        <p class="ok">비밀번호를 작성해 주세요</p>
+      </div>
+      <div>
+        <div><h1>비밀번호 확인</h1></div>
+        <input id="pwCheck" type="password" />
+      </div>
+      <div>
+        <div><h1>분류</h1></div>
+        <select id="classification">
+          <option>대기업</option>
+          <option>중소기업</option>
+          <option>소공상인</option>
+        </select>
+      </div>
+      <div>
+        <div><h1>개인정보 동의</h1></div>
+        <input type="radio" name="personInfo" value="yes" />동의함
+        <input type="radio" name="personInfo" value="no" />동의안함
+      </div>
+      <div>
+        <input id="immediately" type="submit" name="action" value="즉시등록" />
+        <input id="save" type="submit" name="action" value="임시저장" />
+      </div>
+    </form>
+  </body>
+  <!-- <script> -->
+  <!-- </script> -->
+</html>
+<!-- 
+    상호, 
+    대표자,
+    사업자등록번호,  /([0-9]{3})-?([0-9]{2})-?([0-9]{5})/
+    대표전화, 
+    거래처ID, 
+    비밀번호, 
+    비밀번호 확인, 
+    분류(대기업, 중소기업, 소공상인),
+    개인정보동의(동의함, 동의 안함), 
+    처리방법(즉시등록, 임시저장) 
+-->
