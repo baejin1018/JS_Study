@@ -6,70 +6,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link href="./index.css" rel="stylesheet" />
-    <script src="./index.js"></script>
+    <script src="./index2.js"></script>
   </head>
   <body>
-    <form onsubmit="return checkForm()">
-      <div>
-        <div><h1>상호</h1></div>
-        <div><input id="상호" type="text" placeholder="상호" /></div>
-        <p class="ok">상호를 작성해 주세요</p>
+    <h1 class="title">거래처 등록</h1>
+    <form onsubmit="return false">
+      <div class="inputContainer">
+        <div class="selectBox">
+          <div class="titleDiv"><h1>상호</h1></div>
+          <div class="inputDiv">
+            <span class="minititle">* 상호명을 작성해 주세요</span>
+            <div>
+              <input class="inputStyle" id="상호" type="text" name="same" />
+            </div>
+            <p class="ok">상호를 작성해 주세요</p>
+          </div>
+        </div>
+        <div class="selectBox">
+          <div class="titleDiv"><h1>사업자등록번호</h1></div>
+          <div class="inputDiv">
+            <span class="minititle"
+              >* 사업자등록번호를 작성해 주세요 Ex) 000-00-00000,
+              0000000000</span
+            >
+            <div>
+              <input
+                class="inputStyle"
+                id="사업자등록번호"
+                type="text"
+                minlength="10"
+                maxlength="12"
+                name="same"
+              />
+            </div>
+            <p class="ok">사업자등록번호를 작성해 주세요</p>
+          </div>
+        </div>
+        <div class="selectBox">
+          <div class="titleDiv"><h1>대표전화</h1></div>
+          <div class="inputDiv">
+            <span class="minititle">* 대표전화를 작성해 주세요</span>
+            <div>
+              <input class="inputStyle" id="대표전화" type="text" name="same" />
+            </div>
+            <p class="ok">대표전화를 작성해 주세요</p>
+          </div>
+        </div>
+        <div class="selectBox">
+          <div class="titleDiv"><h1>거래처ID</h1></div>
+          <div class="inputDiv">
+            <span class="minititle">* 거래처ID를 작성해 주세요</span>
+            <div>
+              <input class="inputStyle" id="거래처ID" type="text" name="same" />
+            </div>
+            <p class="ok">거래처ID를 작성해 주세요</p>
+          </div>
+        </div>
+        <div class="selectBox">
+          <div class="titleDiv"><h1>비밀번호</h1></div>
+          <div class="inputDiv">
+            <span class="minititle"
+              >* 4글자 이상인 비밀번호를 작성해 주세요</span
+            >
+            <div>
+              <input
+                class="inputStyle"
+                id="비밀번호"
+                minlength="4"
+                type="password"
+                name="same"
+              />
+            </div>
+            <p class="ok">비밀번호를 작성해 주세요</p>
+          </div>
+        </div>
+        <div class="selectBox">
+          <div class="titleDiv"><h1>비밀번호 확인</h1></div>
+          <div class="inputDiv">
+            <span class="minititle">* 비밀번호를 확인해 주세요</span>
+            <div>
+              <input
+                class="inputStyle"
+                id="pwCheck"
+                type="password"
+                name="pwCheck"
+              />
+            </div>
+            <p class="ok">비밀번호가 다릅니다</p>
+          </div>
+        </div>
+        <div class="selectBox">
+          <div class="titleDiv"><h1>분류</h1></div>
+          <div class="inputDiv">
+            <span class="minititle">*자신의 기업 종류를 작성해 주세요</span>
+            <div>
+              <select class="inputStyle" id="classification">
+                <option>대기업</option>
+                <option>중소기업</option>
+                <option>소공상인</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="selectBox">
+          <div class="titleDiv"><h1>개인정보 동의</h1></div>
+          <div class="inputDiv">
+            <div class="ac">
+              <span class="minititle">*개인정보이용에 동의해 주세요</span>
+              <button>
+                <a href="./개인정보동의내용.hwp">개인정보 동의 내용 다운로드</a>
+              </button>
+            </div>
+            <div>
+              <input type="radio" name="personInfo" value="yes" />동의함
+              <input type="radio" name="personInfo" value="undefined" />동의안함
+            </div>
+            <p class="ok">개인정보 동의를 체크해 주세요</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <div><h1>사업자등록번호</h1></div>
-        <input id="사업자등록번호" type="text" maxlength="10" />
-        <p class="ok">사업자등록번호를 작성해 주세요</p>
-      </div>
-      <div>
-        <div><h1>대표전화</h1></div>
-        <input id="대표전화" type="text" />
-        <p class="ok">대표전화를 작성해 주세요</p>
-      </div>
-      <div>
-        <div><h1>거래처ID</h1></div>
-        <input id="거래처ID" type="text" />
-        <p class="ok">거래처ID를 작성해 주세요</p>
-      </div>
-      <div>
-        <div><h1>비밀번호</h1></div>
-        <input id="비밀번호" type="password" />
-        <p class="ok">비밀번호를 작성해 주세요</p>
-      </div>
-      <div>
-        <div><h1>비밀번호 확인</h1></div>
-        <input id="pwCheck" type="password" />
-      </div>
-      <div>
-        <div><h1>분류</h1></div>
-        <select id="classification">
-          <option>대기업</option>
-          <option>중소기업</option>
-          <option>소공상인</option>
-        </select>
-      </div>
-      <div>
-        <div><h1>개인정보 동의</h1></div>
-        <input type="radio" name="personInfo" value="yes" />동의함
-        <input type="radio" name="personInfo" value="no" />동의안함
-      </div>
-      <div>
-        <input id="immediately" type="submit" name="action" value="즉시등록" />
-        <input id="save" type="submit" name="action" value="임시저장" />
+      <div class="btnContainer">
+        <div class="selectBox">
+          <input
+            class="submitBtn"
+            id="immediately"
+            type="submit"
+            value="즉시등록"
+            name="action"
+            onclick="onClickImm()"
+          />
+          <input
+            class="submitBtn"
+            id="save"
+            name="action"
+            type="submit"
+            value="임시저장"
+            onclick="onClickSave()"
+          />
+        </div>
       </div>
     </form>
   </body>
-  <!-- <script> -->
-  <!-- </script> -->
 </html>
-<!-- 
-    상호, 
-    대표자,
-    사업자등록번호,  /([0-9]{3})-?([0-9]{2})-?([0-9]{5})/
-    대표전화, 
-    거래처ID, 
-    비밀번호, 
-    비밀번호 확인, 
-    분류(대기업, 중소기업, 소공상인),
-    개인정보동의(동의함, 동의 안함), 
-    처리방법(즉시등록, 임시저장) 
--->

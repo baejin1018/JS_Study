@@ -1,23 +1,77 @@
-html {
+body {
+  margin: 0;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 90vh;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #113873;
+  overflow: hidden;
+}
+
+.titleDiv {
+  border: 1px solid #dedede;
+  border-collapse: collapse;
+  background-color: #efefef;
+  height: 95px;
+  width: 400px;
+}
+.title {
+  font-weight: 700;
+  font-size: 2rem;
+}
+h1 {
+  margin-left: 20px;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.inputDiv {
+  padding-left: 20px;
+  border-collapse: collapse;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  border: 1px solid #dedede;
+  width: 1300px;
+  height: 95px;
+  background-color: #fff;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+.ac {
+  margin: 10px 0 2px 0;
 }
 
-form {
-  border-radius: 30px;
-  width: 1000px;
-  height: 100%;
-  background-color: white;
+.inputStyle {
+  width: 300px;
+  height: 20px;
 }
-
+.minititle {
+  color: #595959;
+  margin: 10px 0 2px 0;
+}
+.selectBox {
+  display: flex;
+}
 .none {
+  margin-top: 3px;
+  margin: 0;
   color: red;
 }
 .ok {
-  display: none;
+  visibility: hidden;
+}
+
+.submitBtn {
+  width: 200px;
+  height: 50px;
+  margin-left: 20px;
+}
+.btnContainer {
+  margin-top: 10px;
+  margin-left: 1285px;
 }
