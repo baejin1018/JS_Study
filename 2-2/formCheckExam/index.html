@@ -26,17 +26,17 @@
           <div class="titleDiv"><h1>사업자등록번호</h1></div>
           <div class="inputDiv">
             <span class="minititle"
-              >* 사업자등록번호를 작성해 주세요 Ex) 000-00-00000,
-              0000000000</span
+              >* 사업자등록번호를 작성해 주세요 Ex) 0000000000</span
             >
             <div>
               <input
                 class="inputStyle"
                 id="사업자등록번호"
                 type="text"
-                minlength="10"
+                minlength="12"
                 maxlength="12"
                 name="same"
+                oninput="changeBNum(this)"
               />
             </div>
             <p class="ok">사업자등록번호를 작성해 주세요</p>
@@ -101,11 +101,13 @@
             <span class="minititle">*자신의 기업 종류를 작성해 주세요</span>
             <div>
               <select class="inputStyle" id="classification">
+                <option value="none">== 선택 ==</option>
                 <option>대기업</option>
                 <option>중소기업</option>
                 <option>소공상인</option>
               </select>
             </div>
+            <p class="ok">기업을 선택해 주세요</p>
           </div>
         </div>
         <div class="selectBox">

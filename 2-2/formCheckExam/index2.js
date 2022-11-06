@@ -1,21 +1,16 @@
 const form = document.getElementsByTagName("form");
 
 const onClickImm = () => {
-  if (checkForm()) {
-    const result = confirm("즉시등록 하시겠습니까?");
-    if (result) {
-      alert("등록되었습니다.");
-    } else {
-      alert("취소되었습니다.");
-      return true;
-    }
-    form[0].submit();
-  }
+  submitActioc("즉시등록");
 };
 
 const onClickSave = () => {
+  submitActioc("임시저장");
+};
+
+const submitActioc = (message) => {
   if (checkForm()) {
-    const result = confirm("임시저장 하시겠습니까?");
+    const result = confirm(`${message} 하시겠습니까?`);
     if (result) {
       alert("저장되었습니다.");
     } else {
@@ -24,6 +19,12 @@ const onClickSave = () => {
     }
     form[0].submit();
   }
+};
+
+const changeBNum = (target) => {
+  target.value = target.value
+    .replace(/[^0-9]/g, "")
+    .replace(/^(\d{2,3})(\d{2,4})(\d{5})$/, `$1-$2-$3`);
 };
 
 function checkForm() {
@@ -35,6 +36,13 @@ function checkForm() {
   const pwCheck = document.getElementById("pwCheck");
   const selected = document.querySelector('input[name="personInfo"]:checked');
   const none = document.getElementsByTagName("p");
+  const classification = document.getElementById("classification");
+  const classificationValue = classification.options[
+    classification.selectedIndex
+  ].value
+    ? { name: "classification" }
+    : undefined;
+
   const formInfo = [
     name,
     businessNum,
@@ -42,6 +50,7 @@ function checkForm() {
     account,
     pw,
     pwCheck,
+    classificationValue,
     selected,
   ];
 
@@ -89,6 +98,9 @@ function checkForm() {
     },
     undefined(_, i) {
       return setClassNone(i);
+    },
+    classification(_, i) {
+      return setClassOk(i);
     },
     personInfo(item, i) {
       if ((item.value == "undefined") | item) {
