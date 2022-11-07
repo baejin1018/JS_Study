@@ -27,16 +27,22 @@ const changeBNum = (target) => {
     .replace(/^(\d{2,3})(\d{2,4})(\d{5})$/, `$1-$2-$3`);
 };
 
+const onChangeEnterprise = () => {};
+
+const $ = (id) => {
+  return document.getElementById(id);
+};
+
 function checkForm() {
-  const name = document.getElementById("상호");
-  const businessNum = document.getElementById("사업자등록번호");
-  const phoneNum = document.getElementById("대표전화");
-  const account = document.getElementById("거래처ID");
-  const pw = document.getElementById("비밀번호");
-  const pwCheck = document.getElementById("pwCheck");
+  const name = $("상호");
+  const businessNum = $("사업자등록번호");
+  const phoneNum = $("대표전화");
+  const account = $("거래처ID");
+  const pw = $("비밀번호");
+  const pwCheck = $("pwCheck");
   const selected = document.querySelector('input[name="personInfo"]:checked');
   const none = document.getElementsByTagName("p");
-  const classification = document.getElementById("classification");
+  const classification = $("classification");
   const classificationValue = classification.options[
     classification.selectedIndex
   ].value
@@ -87,10 +93,28 @@ function checkForm() {
     }
   };
 
+  const pwLengthCheck = (item, i) => {
+    return item.value.length < 4 ? setClassNone(i) : setClassOk(i);
+  };
+
+  const businessNumCheck = (item, i) => {
+    return item.value.length == 12 ? setClassOk(i) : setClassNone(i);
+  };
+
+  const businessNumChange = (e, i) => {
+    e.target.value.length == 12 ? setClassOk(i) : setClassNone(i);
+  };
   const check = {
     same(item, i) {
       setEvent(item, i, checkEvent);
       return firstCheck(item, i);
+    },
+    businessNum(item, i) {
+      setEvent(item, i, businessNumChange);
+      return businessNumCheck(item, i);
+    },
+    pw(item, i) {
+      return pwLengthCheck(item, i);
     },
     pwCheck(item, i) {
       setEvent(item, i, onChangePwCheck);
