@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+    #list{
+        display: flex;
+        
+    }
+    .item{
+        width: 200px;
+        height: 300px;
+    }
+    </style>    
+  </head>
+  <body>
+    <h1>어드민</h1>
+    <div>
+      <h3>사진</h3>
+      <div>
+      <input type="file" id="img" accept="image/*" onchange="onChangeImg(this)"/>
+      <h3>사진 미리보기</h3>
+      <img width="200px" id="preView"/>
+    </div>
+      <h3>음식명</h3>
+      <input type="text" id="food" />
+      <h3>가격</h3>
+      <input type="number" id="price" />
+      <button onclick="onClickBtn()">등록</button>
+      
+      <script>
+        const s = (selector) => {
+          return document.querySelector(selector);
+        };
+
+        const img = s("#img");
+        const food = s("#food");
+        const price = s("#price");
+        const preViewImg =s("#preView")
+
+        const onChangeImg=(input)=> {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preViewImg.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preViewImg.src = "";
+            }
+        }
+
+        const onClickBtn = async () => {
+          const frm = new FormData();
+
+          frm.append("file", img.files[0]);
+          frm.append("title", food.value);
+          frm.append("content", price.value);
+          frm.append("originalFileName", img.files[0].name);
+
+          await axios
+            .post("/memos", frm, {
+              headers: {
+                token: window.localStorage.getItem("token"),
+              },
+            })
+            .then((res) => {
+                alert("등록성공");
+                 window.location.reload();
+            })
+            .catch((e) => alert("등록실패"));
+        };
+      </script>
+      <h1>상품목록</h1>
+      <div id="list" style="display:flex; width:100%; flex-wrap:wrap;">
+        <% for(let i = 0; i<rows.length; i++){ %>
+            <div class="item">
+                <h2><%= rows[i].title %></h2>
+                <img width="200px" src=<%= rows[i].fileUrl %> alt="img">
+                <p><%= rows[i].content %>원</p>
+               
+                <button onclick="onClickDelete(<%= rows[i].memoid %>)">삭제</button>
+                <button onclick="onClickUpdate(<%= rows[i].memoid %>)">수정</button>
+            </div>
+        <% } %>
+        </div>
+        <script>
+            const onClickDelete =(id)=>{
+                const pTag = document.getElementsByTagName("p");
+                axios.delete(`/memos/${id}`,{
+                headers: {
+                token: window.localStorage.getItem("token"),
+              },
+            }).then((res) => {alert("삭제성공"); window.location.reload();})
+            .catch((e) => alert("삭제실패"));
+            }
+
+            const onClickUpdate=(id)=>{
+                console.log(1);
+                location.href=`/admin/${id}`;
+            }
+        </script>
+        <button><a href="/">유저화면으로 이동</a></button>
+    </div>
+  </body>
+</html>

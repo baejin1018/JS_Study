@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>어드민 로그인</h1>
+
+    <h3>id</h3>
+    <input id="id" type="text" />
+    <h3>password</h3>
+    <input id="password" type="password" />
+    <button onclick="onClickLogin()">로그인</button>
+    <script>
+      const id = document.getElementById("id");
+      const password = document.getElementById("password");
+      const onClickLogin = () => {
+        console.log(id.value, password.value);
+        axios
+          .post("/auth/login", {
+            userid: id.value,
+            password: password.value,
+          })
+          .then((res) => {
+            console.log(res);
+            window.localStorage.setItem("token", res.data.token);
+            location.href = "/admin";
+          })
+          .catch((e) => alert("아이디나 비밀번호가 다릅니다"));
+      };
+    </script>
+  </body>
+</html>

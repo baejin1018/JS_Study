@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html{
+        background-color: #fff;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+     
+      header{
+        width: 100%;
+        height: 100px;
+        background-color: #FFC20D;
+      }
+      #list{
+        width: 100%;
+        /* height: 90%; */
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20%, auto));
+        margin: 20px;
+        overflow-y: scroll;
+      }
+      #title{
+        font-size: 30px;
+      }
+      #allContainer{
+       
+        width: 100%;
+        display: grid;
+        grid-template-columns:4fr 1fr;
+        height: 90vh;
+      }
+      #selectContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 30px 10px 30px;
+        background-color:#009132;
+        /* color: blackwhite; */
+        height: 100%;
+        overflow-y: hidden;
+      }
+      #sumContainer{
+        width: 100%;
+        height: 275px;
+      }
+      #priceDiv{
+        width: 90%;
+        height: 100px;
+        border-radius: 15px;
+        margin-top: 30px; 
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #shoppingBasketContainer{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 90%;
+        height: 375px;
+        border-radius: 15px;
+        margin-top: 30px; 
+        background-color: white;
+        margin-bottom: 20px;
+        overflow-y: scroll;
+      }
+      #btn{
+        background-color: #FFC20D;
+        width: 90%;
+        height: 80px;
+        border: none;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .container{
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        margin-top: 10px;
+        display: flex;
+        width: 220px;
+        height: 80px;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .selectNumContainer{
+        display: flex;
+        width: 40px;
+        height: 20px;
+        align-items: center;
+      }
+      .item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 250px;
+      }
+      .item:hover{
+        transition: 1s;
+        scale: 1.1;
+      }
+      .quantityBtn{
+        border: none;
+        width: 20px;
+        height: 20px;
+        margin: 6px;
+        cursor: pointer;
+      }
+      .quantityBtn:hover{
+        transition: 1s;
+        scale: 1.1;
+      }
+      .removeBtn{
+        border: none;
+        background-color: #fff;
+        cursor: pointer;
+      }
+      #sum{
+        font-size: 30px;
+        font-weight: 900;
+      }
+    </style>
+</head>
+
+<body>
+  <header>
+    <h1 id="title">JinWay</h1>
+  </header>
+  <div id="allContainer">
+     <div id="list">
+        <% for(let i = 0; i<rows.length; i++){ %>
+            <div class="item" onclick="addMenu('<%= rows[i].title %>','<%=rows[i].content%>')">
+                <h2><%= rows[i].title %></h2>
+                <img width="200px" src=<%= rows[i].fileUrl %> alt="img">
+                <p><%= rows[i].content %>원</p>
+            </div>
+        <% } %>
+    </div>
+    <div id="selectContainer">
+      <div>
+      <h1>장바구니</h1>
+      <div id="shoppingBasketContainer">
+        <div id="shoppingBasket"></div>
+      </div>
+    </div>
+      <div id="sumContainer">
+        <h1>합계</h1>
+        <div id="priceDiv">
+         <p id="sum"></p>
+        </div>
+      </div>
+      <button id="btn">주문하기</button>
+    </div>
+  </div>
+
+    <script>
+        const shoppingBasket = document.getElementById("shoppingBasket");
+        let selectList =[];
+
+        const addMenu = (name,price)=> {
+            if(selectList.includes(name)) return
+            selectList.push(name);
+            const div = document.createElement('div')
+            const priceAndTitleDiv = document.createElement('div')
+            const selectNumContainer = document.createElement('div')
+            const h2 = document.createElement('h3')
+            const p = document.createElement('p')
+            const deleteBtn = document.createElement('button');
+            const pButton = document.createElement('button');
+            const mButton = document.createElement('button');
+            const countPTag = document.createElement("p");
+
+            let count = 1;
+
+            deleteBtn.addEventListener("click", (e)=>removeMenu(e));
+
+            h2.innerText = name;
+            p.innerText = `${price}원`;
+            p.classList.add("price")
+            deleteBtn.innerText = "❌";
+            pButton.innerText="+1"
+            mButton.innerText="-1"
+            countPTag.innerText=count;
+            countPTag.classList.add("count");
+            div.classList.add("container")
+            pButton.classList.add("quantityBtn");
+            mButton.classList.add("quantityBtn")
+            deleteBtn.classList.add("removeBtn");
+            selectNumContainer.classList.add("selectNumContainer")
+            selectNumContainer.appendChild(mButton);
+            selectNumContainer.appendChild(countPTag)
+            selectNumContainer.appendChild(pButton)
+
+            
+
+            pButton.addEventListener("click", (e)=>count = plusMenu(e,count,price));
+            mButton.addEventListener("click", (e)=>count = minusMenu(e,count,price));
+
+            priceAndTitleDiv.appendChild(h2);
+            priceAndTitleDiv.appendChild(p);
+
+            div.appendChild(priceAndTitleDiv)
+
+            div.appendChild(selectNumContainer);
+            div.appendChild(deleteBtn);
+
+            shoppingBasket.appendChild(div);
+
+            console.log(count)
+
+            sumCalculator();
+           
+        }
+
+        const sumCalculator = ()=>{
+          const priceArr = document.getElementsByClassName("price");
+          let allPrice = 0;
+          for(let i= 0; i<priceArr.length; i++){
+          allPrice += priceArr[i].innerHTML.split("원")[0]*1;
+          }
+
+          const sumTag = document.getElementById("sum");
+          sumTag.innerText=`${allPrice}원`
+        }
+
+        const removeMenu = (e)=>{
+            const btn = e.target;
+            btn.parentNode.remove();
+            sumCalculator();
+           const deleteName =  btn.parentNode.firstChild.firstChild.innerHTML;
+           console.log(deleteName)
+           selectList = selectList.filter((element) => element != deleteName);
+            console.log(selectList)
+        }
+    
+        const plusMenu =(e,count,price)=>{
+          count+=1
+          e.target.previousSibling.innerText=count
+          console.log( e.target.parentNode.parentNode)
+          e.target.parentNode.parentNode.childNodes[0].lastChild.innerText=`${price*count}원`
+          sumCalculator();  
+          return count
+        }
+
+        const minusMenu =(e,count,price)=>{
+          if(count==1) return count
+          count-=1
+          e.target.nextSibling.innerText=count
+          e.target.parentNode.parentNode.childNodes[0].lastChild.innerText=`${price*count}원`
+          sumCalculator();
+          return count
+        }
+    </script>
+</body>
+</html>
