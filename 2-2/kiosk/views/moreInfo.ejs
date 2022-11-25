@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        #moreInfoContainer{
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display:flex;
+            flex-direction: column; 
+            /* justify-content: center; */
+            align-items: center;
+        }
+        #img{
+            position: absolute;
+            width: 500px;
+            top: 100px;
+        }
+        #info{
+            text-align: center;
+            position: absolute;
+            top: 400px;
+        }
+        h1{
+            font-size: 50px;
+        }
+        p{
+            font-size: 30px;
+            font-weight: 700;
+        }
+        #footer{
+            position: absolute;
+            bottom: 0;
+        }
+        #back{
+            width: 200px;
+            height: 50px;
+            margin: 50px 0px 0px 50px;
+            border: none;
+            background-color: transparent;
+            font-size: 30px;
+            color: black;
+        }
+        #infoContainer{
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+        }
+    </style>
+</head>
+<body>
+    <div id="moreInfoContainer">
+        <div style="width:100%; height:30%; background-color: #009132;" >
+            <button id="back"><a style="text-decoration: none; color:black" href="/"><돌아가기</a></button>
+        </div>
+        <img id="img" width="200px" src= <%=`http://localhost:3000/${rows[0].fileUrl}`%> alt="img">
+        <div id="infoContainer">
+            <div id="info">
+                <h1><%= rows[0].title %></h1>
+                <p><%= rows[0].content %>원</p>
+                <p><%= rows[0].description %></p>
+            </div>
+        </div>
+        <div id="footer" style="width:100%; height:30%; background-color: #FFC20D;"></div>
+    </div>
+</body>
+</html>
