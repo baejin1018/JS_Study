@@ -1,2 +1,2 @@
-# miniNodeServer
-minimum Node Server with SQLite
+# Kiosk
+# [결과물](http://52.79.253.78:3000/)
