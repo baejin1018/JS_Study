@@ -1,0 +1,42 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="timeline">
+  <div class="followings half">
+    <h2>팔로잉 목록</h2>
+    {% if user.Followings %} {% for following in user.Followings %}
+    <input type="hidden" value="{{following.id}}" class="twit-user-id" />
+    <div>{{following.nick}}</div>
+    <button class="twit-unfollow">언팔로우하기</button>
+    {% endfor %} {% endif %}
+  </div>
+  <div class="followers half">
+    <h2>팔로워 목록</h2>
+    {% if user.Followers %} {% for follower in user.Followers %}
+    <div>{{follower.nick}}</div>
+    {% endfor %} {% endif %}
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+  document.querySelectorAll(".twit-unfollow").forEach(function (tag) {
+    console.log(10);
+    tag.addEventListener("click", function () {
+      const myId = document.querySelector("#my-id");
+      if (myId) {
+        const userId = tag.parentNode.querySelector(".twit-user-id").value;
+        if (userId !== myId.value) {
+          if (confirm("언팔로잉하시겠습니까?")) {
+            axios
+              .post(`/user/${userId}/unfollow`)
+              .then(() => {
+                location.reload();
+              })
+              .catch((err) => {
+                console.error(err);
+              });
+          }
+        }
+      }
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{
+  "name": "nodebird-api",
+  "version": "0.0.1",
+  "description": "NodeBird API 서버",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "author": "Zero Cho",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^6.4.0",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^9.0.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.1.0",
+    "nunjucks": "^3.2.1",
+    "passport": "^0.6.0",
+    "passport-kakao": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.0.0",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
