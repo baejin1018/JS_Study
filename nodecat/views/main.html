@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    const url = window.location.pathname;
+    console.log(url);
+  </script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="timeline">
+      <form id="hashtag-form" action="/search">
+        <input
+          type="text"
+          name="hashtag"
+          placeholder="태그 검색"
+          value="{{hashtag}}"
+        />
+        <button class="btn">검색</button>
+      </form>
+
+      <a href="/">전체글</a>
+      <a href="/myposts">내글</a>
+      {% for data in data %}
+      <div class="post" style="margin-bottom: 10px">
+        <div class="nick">{{data.User.nick}}</div>
+        <div class="content">{{data.content}}</div>
+        <input type="hidden" class="id" value="{{data.id}}" />
+        {% if my %}
+        <button class="delete">삭제하기</button>
+        <form method="post" action="/update/{{data.id}}">
+          <input type="text" name="content" />
+          <input type="submit" value="수정하기" />
+        </form>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    document.querySelectorAll(".delete").forEach(function (tag) {
+      tag.addEventListener("click", function () {
+        const postId = tag.parentNode.querySelector(".id").value;
+        console.log(postId);
+        if (confirm("삭제하시겠습니까?")) {
+          axios
+            .delete(`delete/${postId}`)
+            .then(() => {
+              location.reload();
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        }
+      });
+    });
+    axios
+      .post("http://localhost:8002/v2/token", {
+        clientSecret: "{{key}}",
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    // document.querySelectorAll(".update").forEach(function (tag) {
+    //   tag.addEventListener("click", function () {
+    //     const postId = tag.parentNode.querySelector(".id").value;
+    //     const content = tag.parentNode.querySelector(".content2").value;
+    //     console.log(postId);
+    //     if (confirm("수정하시겠습니까?")) {
+    //       axios
+    //         .post(`update/${postId}`, { content })
+    //         .then(() => {
+    //           location.reload();
+    //         })
+    //         .catch((err) => {
+    //           console.error(err);
+    //         });
+    //     }
+    //   });
+    // });
+    // axios
+    //   .post("http://localhost:8002/v2/token", {
+    //     clientSecret: "{{key}}",
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
+  </script>
+</html>

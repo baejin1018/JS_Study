@@ -1,19 +1,19 @@
-const Sequlize = require("sequelize");
+const Sequelize = require("sequelize");
 
-class Domain extends Sequlize.Model {
+class Domain extends Sequelize.Model {
   static initiate(sequelize) {
     Domain.init(
       {
         host: {
-          type: Sequlize.STRING(80),
+          type: Sequelize.STRING(80),
           allowNull: false,
         },
         type: {
-          type: Sequlize.ENUM("free", "premium"),
+          type: Sequelize.ENUM("free", "premium"),
           allowNull: false,
         },
         clientSecret: {
-          type: Sequlize.UUID,
+          type: Sequelize.UUID,
           allowNull: false,
         },
       },
@@ -22,11 +22,12 @@ class Domain extends Sequlize.Model {
         timestamps: true,
         paranoid: true,
         modelName: "Domain",
-        tableName: "domain",
+        tableName: "domains",
       }
     );
   }
-  static associations(db) {
+
+  static associate(db) {
     db.Domain.belongsTo(db.User);
   }
 }

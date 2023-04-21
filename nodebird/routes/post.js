@@ -6,7 +6,8 @@ const fs = require("fs");
 const {
   afterUploadImage,
   uploadPost,
-  updatePost,
+  editPost,
+  deletePost,
 } = require("../controllers/post");
 const { isLoggedIn } = require("../middlewares");
 
@@ -39,6 +40,8 @@ router.post("/img", isLoggedIn, upload.single("img"), afterUploadImage);
 const upload2 = multer();
 router.post("/", isLoggedIn, upload2.none(), uploadPost);
 
-router.post("/update", isLoggedIn, upload2.none(), updatePost);
+router.get("/:id/edit", isLoggedIn, editPost);
+
+router.delete("/:id", isLoggedIn, deletePost);
 
 module.exports = router;

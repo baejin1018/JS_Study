@@ -3,9 +3,11 @@
   <div class="followings half">
     <h2>팔로잉 목록</h2>
     {% if user.Followings %} {% for following in user.Followings %}
-    <input type="hidden" value="{{following.id}}" class="twit-user-id" />
-    <div>{{following.nick}}</div>
-    <button class="twit-unfollow">언팔로우하기</button>
+    <div>
+      {{following.nick}}
+      <button class="twit-unfollow">언팔로우하기</button>
+      <input type="hidden" value="{{following.id}}" class="twit-user-id" />
+    </div>
     {% endfor %} {% endif %}
   </div>
   <div class="followers half">
@@ -18,7 +20,6 @@
 {% endblock %} {% block script %}
 <script>
   document.querySelectorAll(".twit-unfollow").forEach(function (tag) {
-    console.log(10);
     tag.addEventListener("click", function () {
       const myId = document.querySelector("#my-id");
       if (myId) {
